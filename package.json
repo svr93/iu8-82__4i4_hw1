@@ -1,0 +1,23 @@
+{
+  "name": "hw_1",
+  "version": "1.0.0",
+  "description": "ИУ8-82__ЧИЧ_ДЗ№1",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodewebkit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svr93/iu8-82__4i4_hw1"
+  },
+  "author": "Vladimir Shamsheev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svr93/iu8-82__4i4_hw1/issues"
+  },
+  "homepage": "https://github.com/svr93/iu8-82__4i4_hw1",
+  "dependencies": {
+    "nodewebkit": "^0.11.6"
+  }
+}
