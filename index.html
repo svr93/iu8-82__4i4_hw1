@@ -28,11 +28,16 @@
       var initialImgCtx = null;
       var processedImgCtx = null;
 
+      var img = null;
+
       function init() {
 
         document.addEventListener('DOMContentLoaded', function() {
 
           initCnvSettings();
+
+          fileDialog.addEventListener('change', openImg);    
+
         });
 
         function initCnvSettings() {
@@ -50,6 +55,7 @@
         }
       }
     </script>
+    <script defer src="js/img_loader.js"></script>
     <script defer src="js/filter.js" onload="init()"></script>
   </head>
   <body>
@@ -58,6 +64,6 @@
  --><canvas id="processedImgCnv"></canvas>
     <br>
     <br>
-    <input type="file">
+    <input id="fileDialog" type="file">
   </body>
 </html>
