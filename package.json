@@ -4,7 +4,9 @@
   "description": "ИУ8-82__ЧИЧ_ДЗ№1",
   "main": "index.html",
   "window": {
-    "toolbar": false
+    "toolbar": true,
+    "width": 1024,
+    "height": 640
   },
   "scripts": {
     "start": "nodewebkit",
