@@ -4,14 +4,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta name="application-name" content="SimpleMedianFilter___ver1.0">
+    <meta name="author" content="Vladimir Shamsheev, svr93@i.ua">
+
     <style>
       h1 {
         text-align: center;
         color: blue;
       }
+      canvas {
+        display: inline-block;
+        width: 400px;
+        height: 450px;
+      }
     </style>
+
+    <script>
+      'use strict';
+
+      var cnvWidth = null;
+      var cnvHeight = null;
+
+      var initialImgCtx = null;
+      var processedImgCtx = null;
+
+      function init() {
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+          initCnvSettings();
+        });
+
+        function initCnvSettings() {
+          cnvWidth = parseInt(getComputedStyle(initialImgCnv, '').width);
+          cnvHeight = parseInt(getComputedStyle(initialImgCnv, '').height);
+
+          initialImgCnv.width = cnvWidth;
+          initialImgCnv.height = cnvHeight;
+
+          processedImgCnv.width = cnvWidth;
+          processedImgCnv.height = cnvHeight;
+
+          initialImgCtx = initialImgCnv.getContext('2d');
+          processedImgCtx = processedImgCnv.getContext('2d');
+        }
+      }
+    </script>
+    <script defer src="js/filter.js" onload="init()"></script>
   </head>
   <body>
-    <h1>Простейшее десктопное приложение на JS</h1>
+    <h1>Простой медианный фильтр (nw.js)</h1>
+    <canvas id="initialImgCnv"></canvas><!--
+ --><canvas id="processedImgCnv"></canvas>
+    <br>
+    <br>
+    <input type="file">
   </body>
 </html>
