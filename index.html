@@ -8,8 +8,10 @@
     <meta name="author" content="Vladimir Shamsheev, svr93@i.ua">
 
     <style>
-      h1 {
+      body {
         text-align: center;
+      }
+      h1 {
         color: blue;
       }
       canvas {
@@ -21,6 +23,8 @@
 
     <script>
       'use strict';
+
+      var PRECISION_COEFF = 2;
 
       var cnvWidth = null;
       var cnvHeight = null;
@@ -41,8 +45,12 @@
         });
 
         function initCnvSettings() {
-          cnvWidth = parseInt(getComputedStyle(initialImgCnv, '').width);
-          cnvHeight = parseInt(getComputedStyle(initialImgCnv, '').height);
+          
+          cnvWidth = parseInt(getComputedStyle(initialImgCnv, '').width) *
+            PRECISION_COEFF;
+
+          cnvHeight = parseInt(getComputedStyle(initialImgCnv, '').height) *
+            PRECISION_COEFF;
 
           initialImgCnv.width = cnvWidth;
           initialImgCnv.height = cnvHeight;
@@ -65,5 +73,6 @@
     <br>
     <br>
     <input id="fileDialog" type="file">
+    <button onclick="processImg(9)">Ok</button>
   </body>
 </html>
