@@ -17,15 +17,20 @@
   var imgData = null;
   var imgArr = null;
 
-  var windowArr = [];
+  var windowArr = null;
   var windowArrLen = null;
   var centerElem = null;
   var shift = null;
+
+  var initialTime = null;
 
   var pixelsComponentsInFullRows = null;
   var pos = null;
 
   window.processImg = function(windowSize) {
+    initialTime = new Date();
+
+    windowArr = new Array(windowSize);
     windowArrLen = windowSize;
     centerElem = windowArrLen / 2 | 0;
 
@@ -53,17 +58,16 @@
     }
 
     processedImgCtx.putImageData(imgData, 0, 0);
+    timeBlock.innerHTML = new Date() - initialTime;
   };
 
   function processComponent(row, col, k) {
-    windowArr = [];
+    var count = 0;
 
     for (var i = row - shift; i <= row + shift; ++i) {
       for (var j = col - shift; j <= col + shift; ++j) {
 
-        windowArr.push(
-          imgArr[(i * cnvWidth + j) * 4 + k]
-        );
+        windowArr[count++] = imgArr[(i * cnvWidth + j) * 4 + k];
       }
     }
 
