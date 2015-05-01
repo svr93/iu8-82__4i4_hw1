@@ -1,6 +1,10 @@
 function openImg() {
   'use strict';
 
+  if (!(this.value)) { return alert('Укажите путь!');}
+
+  processedCtx.clearRect(0, 0, cnvWidth, cnvHeight);
+
   img = new Image();
 
   img.onload = function() {
