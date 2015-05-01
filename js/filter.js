@@ -33,9 +33,9 @@
     initialTime = new Date();
 
     isSW = +isSquareWindow;
+    windowArrLen = +windowSize;
 
-    windowArr = new Array(windowSize);
-    windowArrLen = windowSize;
+    windowArr = new Array(windowArrLen);
     centerElem = windowArrLen / 2 | 0;
 
     imgData = initialImgCtx.getImageData(0, 0, cnvWidth, cnvHeight);
@@ -66,8 +66,8 @@
 
     var method = isSW ? 'square window' : 'cross window';
 
-    timeBlock.innerHTML = 'Время обработки с использованием ' + method + ': ' +
-    (new Date() - initialTime);
+    timeBlock.innerHTML = 'Время обработки с использованием ' + method + 
+    ' размера ' + windowSize + ': ' + (new Date() - initialTime) + ' мс';
 
   };
 
