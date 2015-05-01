@@ -71,9 +71,9 @@
       }
     }
 
-    windowArr.sort(sortFunc);
+    // windowArr.sort(sortFunc);
 
-    imgArr[pos + k] = windowArr[centerElem];
+    imgArr[pos + k] = getNthStat(windowArr, windowArrLen, centerElem);
   }
 
   function sortFunc(a, b) {
