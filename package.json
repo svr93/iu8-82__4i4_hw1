@@ -4,7 +4,7 @@
   "description": "ИУ8-82__ЧИЧ_ДЗ№1",
   "main": "index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "width": 1024,
     "height": 640
   },
