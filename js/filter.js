@@ -17,6 +17,8 @@
   var imgData = null;
   var imgArr = null;
 
+  var isSW = null;
+
   var windowArr = null;
   var windowArrLen = null;
   var centerElem = null;
@@ -27,8 +29,10 @@
   var pixelsComponentsInFullRows = null;
   var pos = null;
 
-  window.processImg = function(windowSize) {
+  window.processImg = function(isSquareWindow, windowSize) {
     initialTime = new Date();
+
+    isSW = +isSquareWindow;
 
     windowArr = new Array(windowSize);
     windowArrLen = windowSize;
@@ -37,7 +41,8 @@
     imgData = initialImgCtx.getImageData(0, 0, cnvWidth, cnvHeight);
     imgArr = imgData.data;
 
-    shift = Math.sqrt(windowArrLen) / 2 | 0;
+    shift = isSW ? Math.sqrt(windowArrLen) / 2 | 0 :
+                   (windowArrLen - 1) / 4;
 
     var upH = cnvHeight - shift;
     var upW = cnvWidth - shift;
@@ -58,20 +63,39 @@
     }
 
     processedImgCtx.putImageData(imgData, 0, 0);
-    timeBlock.innerHTML = new Date() - initialTime;
+
+    var method = isSW ? 'square window' : 'cross window';
+
+    timeBlock.innerHTML = 'Время обработки с использованием ' + method + ': ' +
+    (new Date() - initialTime);
+
   };
 
   function processComponent(row, col, k) {
     var count = 0;
 
-    for (var i = row - shift; i <= row + shift; ++i) {
-      for (var j = col - shift; j <= col + shift; ++j) {
+    if (isSW) {
 
-        windowArr[count++] = imgArr[(i * cnvWidth + j) * 4 + k];
+      for (var i = row - shift; i <= row + shift; ++i) {
+        for (var j = col - shift; j <= col + shift; ++j) {
+
+          windowArr[count++] = imgArr[(i * cnvWidth + j) * 4 + k];
+        }
       }
-    }
 
-    // windowArr.sort(sortFunc);
+    } else {
+
+      for (var i = row - shift; i <= row + shift; ++i) {
+          windowArr[count++] = imgArr[(i * cnvWidth + col) * 4 + k];
+      }
+      for (var j = col - shift; j < col; ++j) {
+          windowArr[count++] = imgArr[(row * cnvWidth + j) * 4 + k];
+      }
+      for (var j = col + 1; j <= col + shift; ++j) {
+          windowArr[count++] = imgArr[(row * cnvWidth + j) * 4 + k];
+      }
+
+    }
 
     imgArr[pos + k] = getNthStat(windowArr, windowArrLen, centerElem);
   }
