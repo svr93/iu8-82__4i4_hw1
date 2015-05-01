@@ -14,10 +14,12 @@
       h1 {
         color: blue;
       }
-      canvas {
+      .container {
         display: inline-block;
+        vertical-align: top;
         width: 400px;
         height: 450px;
+        border: 2px solid blue;
       }
     </style>
 
@@ -69,12 +71,34 @@
   </head>
   <body>
     <h1>Простой медианный фильтр (nw.js)</h1>
-    <div id="timeBlock"></div>
-    <canvas id="initialImgCnv"></canvas><!--
- --><canvas id="processedImgCnv"></canvas>
+    <div id="timeBlock" style="height:25px"></div>
+    <canvas id="initialImgCnv" class="container"></canvas><!--
+ --><canvas id="processedImgCnv" class="container"></canvas><!--
+ --><form class="container" style="width:150px; text-align:left">
+      <div>
+        Тип окна:
+      </div>
+      <br>
+      <input checked type="radio" name="windowType" value="square">
+      В виде квадрата
+      <br>
+      <input type="radio" name="windowType" value="cross">
+      В виде креста
+      <br>
+      <br>
+      <div>
+        Размер окна:
+      </div>
+      <br>
+      <input checked type="radio" name="windowSize" value="9">
+      9
+      <br>
+      <input type="radio" name="windowSize" value="25">
+      25
+    </form>
     <br>
     <br>
     <input id="fileDialog" type="file">
-    <button onclick="processImg(9)">Ok</button>
+    <button onclick="processImg(25, true)">Выполнить фильтрацию</button>
   </body>
 </html>
