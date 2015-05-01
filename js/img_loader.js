@@ -3,7 +3,7 @@ function openImg() {
 
   if (!(this.value)) { return alert('Укажите путь!');}
 
-  processedCtx.clearRect(0, 0, cnvWidth, cnvHeight);
+  processedImgCtx.clearRect(0, 0, cnvWidth, cnvHeight);
 
   img = new Image();
 
