@@ -42,7 +42,37 @@
 
           initCnvSettings();
 
-          fileDialog.addEventListener('change', openImg);    
+          fileDialog.addEventListener('change', openImg);
+
+          startButton.onclick = function() {
+            if (!fileDialog.value) { return alert('Укажите путь!');}
+
+            var windowType = null;
+            var windowSize = null;
+
+            var windowTypeRadioButtons =
+            document.getElementsByName('windowType');
+
+            for (var i = 0; i < windowTypeRadioButtons.length; ++i) {
+              if (!(windowTypeRadioButtons[i].checked)) { continue; }
+
+              windowType = windowTypeRadioButtons[i].value;
+              break;
+            }
+
+            var windowSizeRadioButtons =
+            document.getElementsByName('windowSize');
+
+            for (var i = 0; i < windowSizeRadioButtons.length; ++i) {
+              if (!(windowSizeRadioButtons[i].checked)) { continue; }
+
+              windowSize = windowSizeRadioButtons[i].value;
+              break;
+            }
+            
+          };
+
+          buttonContainer.style.display = 'block';
 
         });
 
@@ -79,10 +109,10 @@
         Тип окна:
       </div>
       <br>
-      <input checked type="radio" name="windowType" value="square">
+      <input checked type="radio" name="windowType" value="1">
       В виде квадрата
       <br>
-      <input type="radio" name="windowType" value="cross">
+      <input type="radio" name="windowType" value="0">
       В виде креста
       <br>
       <br>
@@ -98,7 +128,9 @@
     </form>
     <br>
     <br>
-    <input id="fileDialog" type="file">
-    <button onclick="processImg(25, true)">Выполнить фильтрацию</button>
+    <div id="buttonContainer" style="display:none">
+      <input id="fileDialog" type="file">
+      <button id="startButton">Выполнить фильтрацию</button>
+    </div>
   </body>
 </html>
