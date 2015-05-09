@@ -1,3 +1,6 @@
 http://sernam.ru/book_kir.php?id=25
 
 http://rsdn.ru/forum/alg/2907191.all
+
+GLOBAL todo-list:
+1) use FileReader API for processing image in real browser
